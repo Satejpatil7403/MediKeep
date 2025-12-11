@@ -24,7 +24,7 @@ API Format->REST (JSON)
 
 🔧 How to Run Locally
 1. Clone the project
-git clone https://github.com/yourusername/patient-document-portal.git
+git clone https://github.com/Satejpatil7403/MediKeep.git
 cd MediKeep
 
 Backend Setup (FastAPI)
