@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
 export const uploadDocument = (file) => {
   const formData = new FormData();
@@ -13,13 +13,13 @@ export const uploadDocument = (file) => {
 };
 
 export const getDocuments = () => {
-    return axios.get(`${API_URL}/documents/`);
+  return axios.get(`${API_URL}/documents/`);
 };
 
 export const deleteDocument = (id) => {
-    return axios.delete(`${API_URL}/documents/${id}`);
+  return axios.delete(`${API_URL}/documents/${id}`);
 };
 
 export const getDownloadUrl = (id) => {
-    return `${API_URL}/documents/${id}/download`;
+  return `${API_URL}/documents/${id}/download`;
 };
