@@ -11,9 +11,17 @@ import crud
 import database
 import aiofiles
 
+
 Base.metadata.create_all(bind=database.engine)
 
-app = FastAPI()
+app = FastAPI(title="MediKeep API")
+
+@app.get("/")
+def root():
+    return {
+        "message": "MediKeep API is running 🚀",
+        "status": "ok"
+    }
 
 app.add_middleware(
     CORSMiddleware,
