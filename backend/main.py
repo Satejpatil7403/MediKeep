@@ -4,7 +4,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import shutil
 import os
-from . import models, schemas, crud, database
+from backend import database
+from backend import crud
+from models import *
+from schemas import *
+from crud import *
+from database import *
 import aiofiles
 
 models.Base.metadata.create_all(bind=database.engine)
