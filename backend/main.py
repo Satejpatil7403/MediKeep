@@ -4,15 +4,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import shutil
 import os
-from backend import database
-from backend import crud
-from models import *
+from database import Base
+import schemas
 from schemas import *
-from crud import *
-from database import *
+import crud
+import database
 import aiofiles
 
-models.Base.metadata.create_all(bind=database.engine)
+Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI()
 
@@ -38,7 +37,7 @@ UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
 if not os.path.exists(UPLOAD_DIR):
     os.makedirs(UPLOAD_DIR)
 
-@app.post("/upload/", response_model=schemas.Document)
+@app.post("/upload/", response_model=Document)
 async def upload_document(file: UploadFile = File(...), db: Session = Depends(get_db)):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="Only PDF files are allowed")
@@ -52,7 +51,7 @@ async def upload_document(file: UploadFile = File(...), db: Session = Depends(ge
         
     filesize = os.path.getsize(file_location)
     
-    document_data = schemas.DocumentCreate(
+    document_data = DocumentCreate(
         filename=file.filename,
         filepath=file_location,
         filesize=filesize
@@ -60,7 +59,7 @@ async def upload_document(file: UploadFile = File(...), db: Session = Depends(ge
     
     return crud.create_document(db=db, document=document_data)
 
-@app.get("/documents/", response_model=list[schemas.Document])
+@app.get("/documents/", response_model=list[Document])
 def list_documents(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     documents = crud.get_documents(db, skip=skip, limit=limit)
     return documents
