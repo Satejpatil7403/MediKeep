@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 
+
 class DocumentBase(BaseModel):
     filename: str
     filesize: int
