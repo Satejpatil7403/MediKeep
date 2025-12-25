@@ -25,7 +25,10 @@ def root():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://medikeep-frontend.onrender.com"],  # For local development, allow all
+    allow_origins=["https://medi-keep-git-main-satejpatils-projects.vercel.app",
+                   "http://localhost:3000",  # Local development (if needed)
+                   "http://localhost:5173",
+                  ],  # For local development, allow all
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
