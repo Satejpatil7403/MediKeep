@@ -25,7 +25,8 @@ def root():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://medi-keep-git-main-satejpatils-projects.vercel.app",
+    allow_origins=["https://medi-keep-coral.vercel.app",
+                   "https://medi-keep-git-main-satejpatils-projects.vercel.app",
                    "http://localhost:3000",  # Local development (if needed)
                    "http://localhost:5173",
                   ],  # For local development, allow all
