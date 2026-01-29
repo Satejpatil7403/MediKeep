@@ -1,10 +1,8 @@
 MediKeep: A Patient Document Portal
-
 A simple full-stack application that allows patients to upload, view, download, and delete medical PDF documents such as prescriptions, reports, and referral notes.
 Built using React (frontend), FastAPI (backend), SQLite (database), and local file storage for uploaded documents.
 
 🚀 Project Overview
-
 This project provides:
 📤 Upload PDFs (with validation)
 📄 List all uploaded documents
@@ -29,17 +27,15 @@ cd MediKeep
 
 Backend Setup (FastAPI)
 2. Install dependencies
-cd backend
-pip install -r requirements.txt
+     cd backend
+     pip install -r requirements.txt
 
 If you don’t have a requirements.txt, use:
 pip install fastapi uvicorn sqlalchemy python-multipart
 
 3. Run the backend server
 uvicorn main:app --reload
-
 Backend runs at:
-
 👉 http://localhost:8000
 
 Frontend Setup (React)
@@ -49,10 +45,7 @@ npm install
 
 5. Start the React dev server
 npm run dev
-
-
 Frontend will be available at:
-
 👉 http://localhost:5173
 
 📡 API Endpoints
@@ -66,9 +59,7 @@ curl -X POST http://localhost:8000/documents \
 GET /documents
 curl http://localhost:8000/documents
 
-
 Response example:
-
 [
   {
     "id": 1,
@@ -79,24 +70,18 @@ Response example:
   }
 ]
 
-3. Download a Document
+4. Download a Document
 GET /documents/{id}
 curl -O http://localhost:8000/documents/1
-
-
 This downloads the PDF file.
 
-4. Delete a Document
+5. Delete a Document
 DELETE /documents/{id}
 curl -X DELETE http://localhost:8000/documents/1
-
-
 Response:
-
 { "message": "Document deleted successfully" }
 
 🎯 Future Enhancements
-
 User authentication (JWT/OAuth)
 Cloud storage (S3/MinIO)
 PostgreSQL database
